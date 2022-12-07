@@ -1,0 +1,63 @@
+#%RAML 1.0
+title: Authors RESTful API
+protocols:
+  - HTTP
+
+version: v1
+
+types:
+  author:
+    properties:
+      authorId:
+        type: string
+        required: true
+      name: 
+        type: string
+        required: true
+      isbn:
+        type: string
+        required: true
+      email:
+        type: string
+        required: true
+      phone:
+        type: string
+        required: true                
+
+/authors:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: author[]
+            example: 
+              [{
+                  "authorId": "1",
+                  "name": "Jeanette Penddreth",
+                  "email": "jeanette.p@mulesoft.com",
+                  "phone": "9781593275846",                  
+                  "isbn": "isbn-59327-asfn"
+              }, {
+                  "authorId": "2",
+                  "name": "Giavani Frediani",
+                  "email": "g.f@apisero.com",
+                  "phone": "9781593275846",
+                  "isbn": "isbn-12345-asfn"
+              }]
+              
+  /{authorId}:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              type: author
+              example: 
+                {
+                "authorId": "1",
+                "name": "Jeanette Penddreth",
+                "email": "j.p@muesoft.com",
+                "phone": "9781593275846",
+                "isbn": "isbn-59327-asfn"
+                }
